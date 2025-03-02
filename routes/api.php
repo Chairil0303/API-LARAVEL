@@ -3,7 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,5 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/employees', [EmployeeController::class, 'index']);
 
-
 Route::apiResource('employees', EmployeeController::class);
+
+Route::middleware('apikey')->get('/employees', [EmployeeController::class, 'index']);
